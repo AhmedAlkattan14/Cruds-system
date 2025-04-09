@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cruds</title>
+    <!--------------- Fonts ------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!---------- font Awesome ---------->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.0/dist/sweetalert2.min.css"
+    />
+
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!------------ bootstrap ------------>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!------------ Style csss --------->
+    <link rel="stylesheet" href="css/style.css" />
+    <!------------- Media query --------->
+    <link rel="stylesheet" href="css/media.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="head text-center mt-2 mb-3">
+            <h1 class="text-uppercase">Cruds</h1>
+            <p>
+              Welcome to the Cruds page. Here you can manage your data easily.
+            </p>
+          </div>
+          <div class="productName">
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Enter your text"
+              id="title"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <div class="col-md-12">
+          <div class="productDetails d-flex flex-wrap align-items-center gap-2">
+            <input
+              type="number"
+              id="price"
+              class="form-control w-auto inputOne"
+              placeholder="Price"
+              oninput="getTotal()"
+              style="flex: 1"
+            />
+            <input
+              type="number"
+              id="taxes"
+              class="form-control w-auto inputTwo"
+              placeholder="Taxes"
+              oninput="getTotal()"
+              style="flex: 1"
+            />
+            <input
+              type="number"
+              id="ads"
+              class="form-control w-auto inputThree"
+              placeholder="Ads"
+              oninput="getTotal()"
+              style="flex: 1"
+            />
+            <input
+              type="number"
+              id="discount"
+              class="form-control w-auto inputFour"
+              placeholder="Discount"
+              oninput="getTotal()"
+              style="flex: 1"
+            />
+            <p
+              class="total-box bg-danger text-white px-3 py-2 rounded text-center d-flex align-items-center justify-content-center"
+              id="totalBox"
+            >
+              Total: <span id="total">0</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-2 align-items-center mt-2">
+        <div class="col-md-12">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Count"
+            id="count"
+          />
+        </div>
+      </div>
+      <div class="row g-2 align-items-center mt-2">
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Category"
+            id="category"
+          />
+        </div>
+      </div>
+      <div class="row g-2 align-items-center mt-2">
+        <div class="col-md-12">
+          <button
+            id="submit"
+            onclick="createProduct()"
+            class="btn btn-primary text-white w-100"
+          >
+            Create
+          </button>
+        </div>
+      </div>
+      <div class="row g-2 align-items-center mt-2">
+        <div class="col-md-12">
+          <input
+            id="search"
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            onkeyup="searchProductsNow()"
+          />
+        </div>
+      </div>
+
+      <div class="row g-2 align-items-center mt-2">
+        <div class="col-sm-6 col-12">
+          <button
+            onclick="searchProducts(this.id)"
+            id="searchByTitle"
+            class="btn btn-primary text-white w-100"
+          >
+            Search by title
+          </button>
+        </div>
+        <div class="col-sm-6 col-12">
+          <button
+            id="searchByCategory"
+            onclick="searchProducts(this.id)"
+            class="btn btn-primary text-white w-100"
+          >
+            Search by category
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-2 align-items-center mt-2">
+        <div class="col-sm-6 col-12">
+          <button
+            onclick="displayAllProducts()"
+            class="btn btn-primary text-white w-100"
+          >
+            Show All Products
+          </button>
+        </div>
+        <div class="col-sm-6 col-12">
+          <button
+            onclick="displayAllCategories()"
+            class="btn btn-primary text-white w-100"
+          >
+            Show All Categories
+          </button>
+        </div>
+        <div class="col-12 mt-3">
+          <button
+            onclick="deleteAll()"
+            id="deleteAll"
+            class="btn btn-danger w-100"
+          >
+            <i class="fas fa-trash-alt me-2"></i>Delete All
+          </button>
+        </div>
+      </div>
+
+      <div class="tabelData table-responsive mt-4">
+        <table class="table table-bordered text-center w-100">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>ID</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Taxes</th>
+              <th>Ads</th>
+              <th>Discount</th>
+              <th>Total</th>
+              <th>Quantity</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

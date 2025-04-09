@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: url(../wallhaven-7pzj1y.png) fixed center center/cover;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+:root {
+  --bs-body-bg: #333;
+  --bs-body-color: white;
+}
+
+.form-control {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.productDetails .total-box {
+  min-width: 120px;
+  height: 38px;
+  margin: 0;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.total-box #total {
+  margin-left: 0.5rem;
+  direction: ltr;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  padding: 6px;
+  text-align: center;
+  border: 1px solid #555;
+  place-content: center;
+}
+
+.table-bordered th {
+  background-color: #75a9dd;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(odd) td {
+  background-color: #f8f9fa;
+  color: #000;
+}
+
+tbody tr:nth-child(even) td {
+  background-color: #d6dadb;
+  color: #000;
+}
+
+tbody tr:hover td {
+  background-color: #5a5e63;
+  transition: 0.3s ease-in-out;
+  color: white;
+}
+
+button {
+  transition: all 0.3s ease-in-out !important;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.03);
+  background-color: #032642 !important;
+  color: white !important;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+td.fw-bold {
+  font-size: 1.1rem;
+  color: #62946d !important;
+  font-weight: bold;
+}
+tbody tr:hover .fw-bold {
+  color: #dc3545 !important;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: #000 !important;
+  transform: scale(1.03);
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+.form-control {
+  transition: all 0.3s ease-in-out;
+}

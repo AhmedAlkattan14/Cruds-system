@@ -1,0 +1,135 @@
+@media (max-width: 576px) {
+  .productDetails {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem;
+  }
+
+  .productDetails input[placeholder="Price"],
+  .productDetails input[placeholder="Taxes"] {
+    flex: 1 1 calc(50% - 0.25rem) !important;
+    min-width: calc(50% - 0.25rem) !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .productDetails input[placeholder="Ads"],
+  .productDetails input[placeholder="Discount"] {
+    flex: 1 1 calc(50% - 0.25rem) !important;
+    min-width: calc(50% - 0.25rem) !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .total-box {
+    flex: 100% !important;
+    width: 100% !important;
+  }
+
+  .col-sm-6 + .col-sm-6 {
+    margin-top: 0.4rem !important;
+  }
+
+  .col-sm-6 .btn {
+    width: 100% !important;
+    height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    padding: 0 !important;
+  }
+
+  .row.g-2.align-items-center {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+
+  .row.g-2.align-items-center .col-sm-6 {
+    flex: 1 1 calc(50% - 0.25rem) !important;
+    min-width: calc(50% - 0.25rem) !important;
+    padding: 0 !important;
+  }
+
+  .table thead th:nth-child(4),
+  .table thead th:nth-child(5),
+  .table thead th:nth-child(6),
+  .table thead th:nth-child(10),
+  .table tbody td:nth-child(4),
+  .table tbody td:nth-child(5),
+  .table tbody td:nth-child(6),
+  .table tbody td:nth-child(10) {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .productDetails {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .productDetails input,
+  .total-box {
+    flex: 1 1 calc(50% - 1rem);
+    min-width: calc(50% - 1rem);
+  }
+  .table thead th:nth-child(6),
+  .table thead th:nth-child(10),
+  .table tbody td:nth-child(6),
+  .table tbody td:nth-child(10) {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .productDetails {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .productDetails input,
+  .total-box {
+    flex: 1 1 calc(33.333% - 1rem);
+    min-width: calc(33.333% - 1rem);
+  }
+  .table thead th:nth-child(10),
+  .table tbody td:nth-child(10) {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .productDetails {
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+  .productDetails input,
+  .total-box {
+    flex: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  .productDetails {
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+  }
+  .productDetails input,
+  .total-box {
+    flex: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+
+

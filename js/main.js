@@ -32,7 +32,110 @@ function getTotal() {
   }
 }
 
+function validateInputs() {
+  const title = document.getElementById("title").value.trim();
+  const price = document.getElementById("price").value;
+  const taxes = document.getElementById("taxes").value;
+  const ads = document.getElementById("ads").value;
+  const discount = document.getElementById("discount").value;
+  const count = document.getElementById("count").value;
+  const category = document.getElementById("category").value.trim();
+
+  // Title validation
+  if (!title) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Product Name Required',
+      text: 'Please enter a product name',
+      confirmButtonColor: '#3085d6'
+    });
+    return false;
+  }
+
+  if (title.length < 3) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid Product Name',
+      text: 'Product name must be at least 3 characters long',
+      confirmButtonColor: '#3085d6'
+    });
+    return false;
+  }
+
+  // Price validation
+  if (!price || price <= 0) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid Price',
+      text: 'Please enter a valid price greater than 0',
+      confirmButtonColor: '#3085d6'
+    });
+    return false;
+  }
+
+  // Count validation
+  if (!count || count <= 0) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid Count',
+      text: 'Please enter a valid count greater than 0',
+      confirmButtonColor: '#3085d6'
+    });
+    return false;
+  }
+
+  // Category validation
+  if (!category) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Category Required',
+      text: 'Please enter a category name',
+      confirmButtonColor: '#3085d6'
+    });
+    return false;
+  }
+
+  if (category.length < 3) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid Category',
+      text: 'Category name must be at least 3 characters long',
+      confirmButtonColor: '#3085d6'
+    });
+    return false;
+  }
+
+  // Optional fields validation (convert to number or 0 if empty)
+  const taxesNum = taxes ? Number(taxes) : 0;
+  const adsNum = ads ? Number(ads) : 0;
+  const discountNum = discount ? Number(discount) : 0;
+
+  // Validate numbers are not negative
+  if (taxesNum < 0 || adsNum < 0 || discountNum < 0) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid Values',
+      text: 'Taxes, Ads, and Discount cannot be negative',
+      confirmButtonColor: '#3085d6'
+    });
+    return false;
+  }
+
+  return {
+    title,
+    price: Number(price),
+    taxes: taxesNum,
+    ads: adsNum,
+    discount: discountNum,
+    count: Number(count),
+    category
+  };
+}
+
 function createProduct() {
+  const validatedData = validateInputs();
+  if (!validatedData) return;
+
   let now = new Date();
   let date = now.toLocaleDateString("en-GB");
   let time = now.toLocaleTimeString("en-US", {
@@ -43,14 +146,14 @@ function createProduct() {
   let day = now.toLocaleDateString("en-US", { weekday: "long" });
 
   let product = {
-    title: title.value.toLowerCase(),
-    price: price.value,
-    taxes: taxes.value,
-    ads: ads.value,
-    discount: discount.value,
+    title: validatedData.title,
+    price: validatedData.price,
+    taxes: validatedData.taxes,
+    ads: validatedData.ads,
+    discount: validatedData.discount,
     total: total.innerHTML,
-    count: count.value,
-    category: category.value.toLowerCase(),
+    count: validatedData.count,
+    category: validatedData.category,
     createdAt: `${day}, ${date} - ${time}`,
   };
 
